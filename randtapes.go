@@ -1,18 +1,23 @@
+package main
+
 import (
 	"fmt"
 	"math"
-	"time"
+	"math/rand"
 )
 
-func main() {
-	var alpha int
-	var beta int
-	var gama int
-	alpha = rand.Seed(time.Now()) + rand.Seed(time.Now()+3.141592)*3.1415923
-	beta = ((alpha * 3.141592) + 7) / 13
+func randtape() {
+	var alpha int64
+	var beta int64
+	var gama int64
+	//var A, B int64
+	//A = int64(i*7) % 89
+	//B = int64(i+13) % 13
+	alpha = int64(rand.Intn(10) + rand.Intn(100))
+	beta = ((alpha * 3) + 7) / 13
 	gama = beta % 20
-	gama = math.Abs(gama)
-	fmt.Printf(gama)
+	gama = int64(math.Abs(float64(gama)))
+	//fmt.Println(gama)
 	if gama < 5 {
 		fmt.Printf("A")
 	} else {
@@ -25,5 +30,12 @@ func main() {
 				fmt.Printf("T")
 			}
 		}
+	}
+
+}
+func main() {
+	for i := 0; i < 64; i++ {
+		randtape()
+
 	}
 }
